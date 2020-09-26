@@ -1,0 +1,41 @@
+﻿body {
+}
+
+.slidebar{
+    height: 100vh;
+    background-color:  #201c1c;
+}
+
+.bottom-border{
+    border-bottom: 1px groove #fff;
+}
+
+.slidebar-link{
+    transition: all .3s ease;
+    font-size: 18px;
+}
+
+.slidebar-link:hover{
+    background-color: #d74141;
+    border-radius: 5px;
+}
+
+.slidebar-link:active{
+    background-color: #f9f534;
+    border-radius: 5px;
+    color: black !important;
+}
+
+@media(max-width: 768px){
+    .slidebar{
+        position: static;
+        height: auto;
+    }
+    .top-navbar{
+        position: static;
+    }
+}
+
+nav{
+    height: 12vh;
+}

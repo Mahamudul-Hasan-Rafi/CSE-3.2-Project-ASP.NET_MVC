@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MyApp.Model.ProductModel>
+@{
+    ViewBag.Title = "ShoppingPanel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Style/indexStyleSheet.css" rel="stylesheet"/>
+<style>
+    a{
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+    a:hover{
+       font-size: 21px;
+       text-decoration: none;
+    }
+</style>
+@{ 
+    List<String> list = new List<String>();
+
+    foreach(var item in (IEnumerable<MyApp.Model.ProductModel>)ViewData["mobiles"])
+    {
+        list.Add(item.Brand);
+    }
+
+    list = list.Distinct().ToList();
+}
+
+@{
+        <div class="container">
+            <div class="row border-bottom">
+                <h1 class="text-center col-md-12 text-dark mb-5"><u>Brands</u></h1>
+
+                @foreach (var item in list)
+                {
+                    <p class="h5 col-md-3 text-center text-danger">
+                        <a href="@Url.Action("SearchBrand","Home",new { brand=item})">@item</a>
+                    </p>
+                }
+            </div>
+        </div>
+
+    }
+
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4">
+        @{
+            var i = 0;
+            foreach (var item in Model)
+            {
+                <div class="col mb-1">
+                    <div class="card col mb-5 mt-5 p-5">
+                        <img class="card-img-top" src="@Url.Content(item.ImagePath)" style="width: 90%">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.ProductName</h5>
+                            <p class="card-text">4G Smartphone <span>@item.RAM</span> RAM <span>@item.ROM</span> ROM Chinese & English Version.</p>
+                            <a href="@Url.Action("ShowProductDetails","Home",new { id=item.ProductID})" class="btn btn-primary">View Product</a>
+                        </div>
+                    </div>
+                </div>              
+                i++;
+            }
+        }
+    </div>
+</div>
+
+
+
+

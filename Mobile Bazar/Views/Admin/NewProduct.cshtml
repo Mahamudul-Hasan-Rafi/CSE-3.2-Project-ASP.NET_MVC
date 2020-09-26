@@ -1,0 +1,358 @@
+﻿@model MyApp.Model.ProductModel
+
+@{
+    ViewBag.Title = "NewProduct";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+<style>
+    p.display-4 {
+        font-size: 40px;
+        color: darkslategray;
+    }
+</style>
+<div class="text-center mt-3 mb-5">
+    <p class="display-4 text-success">NEW PRODUCT</p>
+</div>
+@{
+    if (@ViewData["Added"] != null)
+    {
+        if (ViewData["Added"].Equals("True"))
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <p class="text-center">Added Succesfully</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <p class="text-center">Failed to Add!</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    }
+}
+<div class="container-fluid">
+    <div class="row">
+        @using (Html.BeginForm("NewProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data", @class = "col-md-12" }))
+        {
+            <div class="form-group">
+                <label for="inputName">Product Name</label>
+                @Html.EditorFor(model => model.ProductName, new
+                {
+                    htmlAttributes =
+               new { @class = "form-control", @id = "inputName", @placeholder = "Samsung Galaxy S7" }
+                })
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputbrand">Brand</label>
+                    @Html.EditorFor(model => model.Brand, new
+                    {
+                        htmlAttributes =
+                        new { @class = "form-control", @id = "inputbrand", @placeholder = "Samsung" }
+                    })
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputwarranty">Warranty</label>
+                    @Html.EditorFor(model => model.Warranty, new
+                   {
+                       htmlAttributes =
+                       new { @class = "form-control", @id = "inputwarranty", @placeholder = "Warranty" }
+                   })
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputquant">Quantity</label>
+                    @Html.EditorFor(model => model.Quantity, new
+                   {
+                       htmlAttributes =
+                       new { @type = "number", @class = "form-control", @id = "inputquant", @placeholder = 10 }
+                   })
+                </div>
+   
+            </div>
+
+            <div class="form-group">
+                <label for="inputprice">Price in TAKA</label>
+                @Html.EditorFor(model => model.Price, new
+                   {
+                       htmlAttributes =
+                       new { @type = "number", @class = "form-control", @id = "inputprice" }
+                   })
+            </div>
+
+            <div class="form-group">
+                <label for="inputprice">Release Year</label>
+                @Html.EditorFor(model => model.ReleaseYear, new
+                   {
+                       htmlAttributes =
+                       new { @type = "number", @class = "form-control", @id = "inputprice" }
+                   })
+            </div>
+
+            <fieldset class="border rounded rounded col-md-12">
+                <legend style="width: auto" class="text-uppercase">Display</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="inputquant">Type</label>
+                        @Html.EditorFor(model => model.DisplayType, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputquant", @placeholder = "ppd" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">Size</label>
+                        @Html.EditorFor(model => model.DisplaySize, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "9.45 inch" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">Resolution</label>
+                        @Html.EditorFor(model => model.Resolution, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "1920*1080" }
+                        })
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="border rounded col-md-12">
+                <legend style="width: auto" class="text-uppercase">Camera</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputquant">Selfie Camera</label>
+                        @Html.EditorFor(model => model.SelfieCamera, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputquant", @placeholder = "30 megapx" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">Main Camera</label>
+                        @Html.EditorFor(model => model.MainCamera, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "20 megapx" }
+                        })
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="border rounded col-md-12">
+                <legend style="width: auto" class="text-uppercase">Memory</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputquant">ROM</label>
+                        @Html.EditorFor(model => model.ROM, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputquant", @placeholder = "64GB" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">RAM</label>
+                        @Html.EditorFor(model => model.RAM, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "4GB" }
+                        })
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="border rounded col-md-12">
+                <legend style="width: auto" class="text-uppercase">Platform</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="inputquant">OS</label>
+                        @Html.EditorFor(model => model.OperatingSystem, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputquant", @placeholder = "Android Pi" }
+                        })
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputquant">Chipset</label>
+                        @Html.EditorFor(model => model.Chipset, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputquant", @placeholder = "Helio Chip" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">CPU</label>
+                        @Html.EditorFor(model => model.CPU, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "octacore 78" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">GPU</label>
+                        @Html.EditorFor(model => model.GPU, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "DL 99" }
+                        })
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="border rounded col-md-12">
+                <legend style="width: auto" class="text-uppercase">Body</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputquant">Weight</label>
+                        @Html.EditorFor(model => model.Weight, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputquant", @placeholder = "200g" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">SIM</label>
+                        @Html.EditorFor(model => model.SIM, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "Dual" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">Color</label>
+                        @Html.EditorFor(model => model.Color, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "Red" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">Dimension</label>
+                        @Html.EditorFor(model => model.Dimension, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "45*78*2" }
+                        })
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="border rounded col-md-12">
+                <legend style="width: auto" class="text-uppercase">Connectivity</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="inputquant">Bluetooth</label>
+                        @Html.EditorFor(model => model.Bluetooth, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputquant", @placeholder = "4.544 mkl jo" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">WLAN</label>
+                        @Html.EditorFor(model => model.WLAN, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "4.544 mkl jo" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">GPS</label>
+                        @Html.EditorFor(model => model.GPS, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "Yes" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">USB</label>
+                        @Html.EditorFor(model => model.USB, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "Type C" }
+                        })
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="border rounded col-md-12">
+                <legend style="width: auto" class="text-uppercase">Battery</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="inputquant">Type</label>
+                        @Html.EditorFor(model => model.BatteryType, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputquant", @placeholder = "4500mAh" }
+                        })
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="border rounded col-md-12">
+                <legend style="width: auto" class="text-uppercase">Features</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="">Sensors</label>
+                        @Html.EditorFor(model => model.Sensors, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputquant", @placeholder = "Accelerator" }
+                        })
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputsold">Video</label>
+                        @Html.EditorFor(model => model.Video, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputsold", @placeholder = "30 fps" }
+                        })
+                    </div>
+                </div>
+
+            </fieldset>
+
+            <fieldset class="border rounded col-md-12">
+                <legend style="width: auto" class="text-uppercase">Network</legend>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        <label for="inputquant">Technology</label>
+                        @Html.EditorFor(model => model.NetworkTechnology, new
+                        {
+                            htmlAttributes =
+                            new { @type = "text", @class = "form-control", @id = "inputquant", @placeholder = "GSM" }
+                        })
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset class="border rounded col-md-12">
+                <legend style="width: auto" class="text-uppercase">Product Image</legend>
+                <div class="form-group">
+                    <label for="inputfile">Upload Product Image:</label>
+                    <input type="file" name="ImageFile" id="inputfile" class="ml-5" />
+                </div>
+            </fieldset>
+
+            <button type="submit" class="btn btn-primary btn-block px-5 py-2 mt-5 mb-3">Add Product</button>
+        }
+    </div>
+</div>
+
+

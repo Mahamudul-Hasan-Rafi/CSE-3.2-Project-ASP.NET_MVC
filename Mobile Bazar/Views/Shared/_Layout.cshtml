@@ -1,0 +1,191 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Style/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark bar sticky-top first-nav">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <a class="navbar-brand logo">
+                <img src="~/Images/Logo_Mobile Bazaar.png" />
+            </a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Home")#Home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Home")#Features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Home")#Shop">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Home")#About">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Home")#Contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <div class="account-my">
+            <div class="crsr">
+                <i class="far fa-user"></i>
+                <a href="" data-toggle="modal" data-target="#signinpage">My Account</a>
+            </div>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-dark bg-dark search sticky-top second-nav" id="nav-scroll">
+        <div class="container col-md-12">
+            @using (Html.BeginForm("SearchBrand", "Home", FormMethod.Post, htmlAttributes: new { @class = "form-inline col-md-12" }))
+            {
+                <div class="input-group col-sm-7 d-flex justify-content-md-end justify-content-sm-center">
+                    <input type="text" name="Brand" class="form-control col-md-5" placeholder="Search Brand or Product name" aria-label="Username" aria-describedby="basic-addon1">
+                    <div class="input-group-append">
+                        <button class="input-group-text" type="submit">
+                            <i class="fas fa-search icon"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="col-sm-5 account">
+                    <div class="col-md-4 crsr">
+                        <i class="far fa-user"></i>
+                        <a href="" data-toggle="modal" data-target="#signinpage">My Account</a>
+                    </div>
+                </div>
+            }
+            @*<form class="form-inline col-md-12">
+            </form>*@
+        </div>
+    </nav>
+    <div class="modal fade" id="signinpage">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 dark-gray-text font-weight-bold ml-4">SIGN IN</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close">&times;</button>
+                </div>
+                <div class="modal-body mx-4 mt-4">
+
+                    @using (Html.BeginForm("SignIn","Home",FormMethod.Post))
+                    {
+                        <div class="d-flex justify-content-center align-items-center">
+                            <input class="form-control" type="text" placeholder="Email" name="email"/>
+                        </div>
+                        <div class="md-form  d-flex justify-content-center align-items-center mt-4">
+                            <input class="form-control" type="password" placeholder="Password" name="password" />
+                        </div>
+                        <div class="mb-4">
+                            <p class="font-small blue-text d-flex justify-content-center">
+                                Forget
+                                <a href="#" class="blue-text ml-1">Password?</a>
+                            </p>
+                        </div>
+                        <div class="text-center mb-1">
+                            <button type="submit" class="btn btn-primary z-depth-1">Sign in</button>
+                        </div>
+                        <div class="mb-5">
+                            <p class="font-small blue-text d-flex justify-content-center">
+                                Not Registered?
+
+                                @Html.ActionLink("Sign Up", "SignUp", "Home", null,
+                                new
+                                {
+                                    @class = "blue-text ml-1"
+                                })
+                            </p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="body-content">
+        @RenderBody()
+    </div>
+    <div class="container-fluid border" style="background-color:  #303036;" id="About">
+        <div class="footer">
+            <div class="footer-content row">
+                <div class="footer-section about col-md-4">
+                    <h1 class="logo-text"><span>Mobile</span>Bazaar</h1>
+                    <p class="mt-2">
+                        sidkfhksjfhsf saifh sfjhsfsf sfjsfhsjkfhsdfkjh sdfjghsdfjh,
+                        sidkfhksjfhsf saifh sfjhsfsf sfjsfhsjkfhsdfkjh sdfjghsdfjh
+                        sidkfhksjfhsf saifh sfjhsfsf sfjsfhsjkfhsdfkjh sdfjghsdfjh
+                        hdhdhjasd djd
+                    </p>
+                    <div class="socials mt-3">
+                        <a href="#" style="color: blue;"><i class="fab fa-facebook"></i></a>
+                        <a href="#" style="color: pink;"><i class="fab fa-instagram"></i></a>
+                        <a href="#" style="color: #41cbd8;"><i class="fab fa-twitter"></i></a>
+                        <a href="#" style="color: red;"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section links col-md-4">
+                    <h2>Quick Links</h2>
+                    <br />
+                    <ul>
+                        <a href="#">
+                            <li>Events</li>
+                        </a>
+                        <a href="#">
+                            <li>Team</li>
+                        </a>
+                        <a href="#">
+                            <li>Services</li>
+                        </a>
+                        <a href="#">
+                            <li>Terms & Conditions</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="footer-section cntct col-md-4">
+                    <h2>Address</h2>
+                    <div class="contact mt-4">
+                        <span><i class="fa fa-home" aria-hidden="true"></i> &nbsp; XYZ, Dhaka Zip Code: 1230</span>
+                        <span><i class="fas fa-phone"></i>&nbsp; +880192002</span>
+                        <span><i class="fas fa-envelope"></i>&nbsp; example@gmail.com</span>
+                        <span><i class="fas fa-print"></i>&nbsp; 123-456-789</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        /*var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+            var currentScrollPos = window.pageYOffset;
+            if (currentScrollPos<20) {
+                document.getElementById("nav-scroll").style.display = "";
+            } else {
+                document.getElementById("nav-scroll").style.display = "none";
+                //document.getElementById("nav-sc").style.top = "0";
+            }
+            //prevScrollpos = currentScrollPos;
+        }*/
+    </script>
+
+</body>
+</html>

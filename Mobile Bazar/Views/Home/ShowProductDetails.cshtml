@@ -1,0 +1,286 @@
+﻿@model MyApp.Model.ProductModel
+
+@{
+    ViewBag.Title = "ShowProductDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div>
+        @{
+            var a = Model.Quantity;
+            var b = Model.SoldItems;
+
+            var c = a - b;
+            <script>
+                console.log(@c);
+            </script>
+        }
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-md-5 text-center">
+                    <img src="@Url.Content(Model.ImagePath)" />
+                </div>
+                <div class="col-md-7">
+                    <h1 class="text-dark">@Html.DisplayFor(model => model.ProductName)</h1>
+                    <p class="text-success">Product-Code: @Html.DisplayFor(model => model.ProductID)</p>
+                    <h4 class="mt-5 text-dark">Brand: <span class="text-info">@Html.DisplayFor(model => model.Brand)</span></h4>
+                    <h4 class="text-dark">Price: <span class="text-info">Tk @Html.DisplayFor(model => model.Price)</span></h4>
+                    <p><span class="h4 text-dark">Warranty: </span><span class="text-info h4">@Html.DisplayFor(model => model.Warranty)</span></p>
+                    <p><span class="h4 text-dark">Availability: </span><span class="text-info h4">@c  items</span></p>
+                   
+                </div>
+            </div>
+            <h2 class="text-center mt-5 text-danger">Specifications</h2>
+            <div class="row">
+                <fieldset class="border rounded rounded col-md-12">
+                    <legend style="width: auto" class="text-uppercase">Display</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputquant">Type</label>
+                            @Html.EditorFor(model => model.DisplayType, new
+                              {
+                                  htmlAttributes =
+                                  new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                              })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">Size</label>
+                            @Html.EditorFor(model => model.DisplaySize, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">Resolution</label>
+                            @Html.EditorFor(model => model.Resolution, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="border rounded col-md-12">
+                    <legend style="width: auto" class="text-uppercase">Camera</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputquant">Selfie Camera</label>
+                            @Html.EditorFor(model => model.SelfieCamera, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">Main Camera</label>
+                            @Html.EditorFor(model => model.MainCamera, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="border rounded col-md-12">
+                    <legend style="width: auto" class="text-uppercase">Memory</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputquant">ROM</label>
+                            @Html.EditorFor(model => model.ROM, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">RAM</label>
+                            @Html.EditorFor(model => model.RAM, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="border rounded col-md-12">
+                    <legend style="width: auto" class="text-uppercase">Platform</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputquant">OS</label>
+                            @Html.EditorFor(model => model.OperatingSystem, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="inputquant">Chipset</label>
+                            @Html.EditorFor(model => model.Chipset, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">CPU</label>
+                            @Html.EditorFor(model => model.CPU, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">GPU</label>
+                            @Html.EditorFor(model => model.GPU, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="border rounded col-md-12">
+                    <legend style="width: auto" class="text-uppercase">Body</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputquant">Weight</label>
+                            @Html.EditorFor(model => model.Weight, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">SIM</label>
+                            @Html.EditorFor(model => model.SIM, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">Color</label>
+                            @Html.EditorFor(model => model.Color, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">Dimension</label>
+                            @Html.EditorFor(model => model.Dimension, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="border rounded col-md-12">
+                    <legend style="width: auto" class="text-uppercase">Connectivity</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputquant">Bluetooth</label>
+                            @Html.EditorFor(model => model.Bluetooth, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">WLAN</label>
+                            @Html.EditorFor(model => model.WLAN, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">GPS</label>
+                            @Html.EditorFor(model => model.GPS, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">USB</label>
+                            @Html.EditorFor(model => model.USB, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="border rounded col-md-12">
+                    <legend style="width: auto" class="text-uppercase">Battery</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="inputquant">Type</label>
+                            @Html.EditorFor(model => model.BatteryType, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="border rounded col-md-12">
+                    <legend style="width: auto" class="text-uppercase">Features</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label for="">Sensors</label>
+                            @Html.EditorFor(model => model.Sensors, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputsold">Video</label>
+                            @Html.EditorFor(model => model.Video, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                    </div>
+
+                </fieldset>
+
+                <fieldset class="border rounded col-md-12">
+                    <legend style="width: auto" class="text-uppercase">Network</legend>
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <label for="inputquant">Technology</label>
+                            @Html.EditorFor(model => model.NetworkTechnology, new
+                            {
+                                htmlAttributes =
+                                new { @type = "text", @class = "form-control", @disabled = "disabled" }
+                            })
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+
+
+

@@ -1,0 +1,59 @@
+﻿@model MyApp.Model.CustomerModel
+
+@{
+    ViewBag.Title = "MyProfile";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<div>
+    @{
+        if (ViewData["Updated"]!=null)
+        {
+            <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
+                <p>Updated Successfully!</p>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        }
+    }
+    <div class="container mt-5 mb-5">
+        <div class="card">
+            <div class="card-header text-center bg-transparent">
+                <img src="~/Images/user_profile.png" style="width: 80px" />
+                <h4>Profile</h4>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("UpdateInfo", "Index", FormMethod.Post))
+                {
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        </div>
+                        <div class="form-group col-md-6">
+                            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control col-md-12" } })
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block mt-5">Update</button>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+

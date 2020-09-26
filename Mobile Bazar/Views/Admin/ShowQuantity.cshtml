@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MyApp.Model.ProductModel>
+
+@{
+    ViewBag.Title = "ShowQuantity";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<div class="">
+    @using (Html.BeginForm("ShowQuantity", "Admin", FormMethod.Post))
+    {
+        <div class="form-row" style="margin-top: 100px;">
+
+            @Html.Label("Search", new { @class = "col-md-3 control-label d-flex justify-content-end align-items-center h5" })
+
+            <div class="col-md-6">
+                @Html.TextBox("searchText", null, new { @class = "form-control" })
+            </div>
+
+            <button type="submit" class="btn btn-primary mb-2 col-md-2">Search</button>
+        </div>
+
+    }
+</div>
+@{
+    
+}
+<table class="table table-bordered table-striped mt-3">
+    <tr class="thead-dark">
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Brand)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoldItems)
+        </th>
+        <th>
+            @Html.DisplayName("Available Items")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Brand)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoldItems)
+        </td>
+        <td>
+            @{ 
+                var a = item.Quantity;
+                var b = item.SoldItems;
+                var c = a - b;
+            }
+            @c
+        </td>
+    </tr>
+       
+    }
+
+</table>
+
+

@@ -1,0 +1,160 @@
+﻿@model IEnumerable<MyApp.Model.ProductModel>
+@{
+    ViewBag.Title = "CustomerIndex";
+    Layout = "~/Views/Shared/_LayoutCustomer.cshtml";
+}
+
+<link href="~/Style/indexStyleSheet.css" rel="stylesheet" />
+<script>
+        console.log("Hello");
+        console.log(@ViewBag.checkAuthentic)
+</script>
+<div id="Home">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner border">
+            <div class="carousel-item active">
+                <div class="row align-items-center">
+                    <div class="col-md-7 desc">
+                        <h3>Samsung Galaxy Note 20 Ultra 12GB/256GB (Pre-Book)</h3>
+                        <h6>
+                            The first to merge a pen with a phone, Note put a whole new world in your pocket.
+                            This is the power phone that forever changes how you work and play.
+                        </h6>
+                        <button class="btn btn-primary mt-4">BUY NOW</button>
+                    </div>
+                    <div class="col-md-5">
+                        <img class="d-block w-100" src="~/Images/samsung-galaxy-note-20-k.png" alt="First slide">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row align-items-center">
+                    <div class="col-md-8 desc">
+                        <h3>Oppo Realme 5i 4GB/64GB (Crystal Purple)</h3>
+                        <h6>
+                            Watch movies, play games, text your buddies and do a lot more
+                            with the Realme 5 that features a 16.51 cm (6.5) HD+ Mini-drop
+                            display.Click beautiful pictures of scenic views with its revolutionary
+                            AI Quad Camera.
+                        </h6>
+                        <button class="btn btn-primary mt-4">BUY NOW</button>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="d-block w-100" src="~/Images/Oppo realme 6i.png" alt="Second slide">
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row align-items-center">
+                    <div class="col-md-8 desc">
+                        <h3>Xiaomi Redmi Note 8 Pro – 6GB/64GB</h3>
+                        <h6>
+                            The phone comes with a 6.53-inch touchscreen display with a
+                            resolution of 1080×2340 pixels and an aspect ratio of 19.5:9.
+                            Powered by an octa-core MediaTek Helio G90T processor
+                        </h6>
+                        <button class="btn btn-primary mt-4">BUY NOW</button>
+                    </div>
+                    <div class="col-md-4">
+                        <img class="d-block w-100" src="~/Images/Xiaomi-Redmi-Note-8-1.png" alt="Third slide">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+<div id="Shop" class="jumbotron">
+    <div class="Top-Sale">
+        <div class="top">
+            <p class="display-4 text-danger"><u>On Top Sale</u></p>
+        </div>
+        <div class="container-fluid top-sale-container">
+            <div class="p-3">
+                <a href="@Url.Action("ShoppingPanel_Customer","Index")" class="d-flex justify-content-end text-success h4">
+                    See more
+                </a>
+                <div class="card-deck">
+                    @{
+                        foreach (var item in Model)
+                        {
+                            <div class="card col-md-3 mt-5 p-5">
+                                <img class="card-img-top" src="@Url.Content(item.ImagePath)" style="width: 90%">
+                                <div class="card-body">
+                                    <h5 class="card-title">@item.ProductName</h5>
+                                    <p class="card-text">4G Smartphone <span>@item.RAM</span> RAM <span>@item.ROM</span> ROM Chinese & English Version.</p>
+                                    <a href="@Url.Action("ShowProductDetails_Customer","Index",new { id=item.ProductID})" class="btn btn-primary">View Product</a>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Features" class="container">
+
+    <div class="row f-row">
+        <div class="col-md-3">
+            <i class="fas fa-shipping-fast fa-3x mb-3"></i>
+            <h4 style="color: #ff6a00">Free Shipping</h4>
+            <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        </div>
+        <div class="col-md-3">
+            <i class="fas fa-undo-alt fa-3x mb-3"></i>
+            <h4 style="color: #ff6a00">Return Policy</h4>
+            <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        </div>
+        <div class="col-md-3">
+            <i class="fas fa-headphones-alt fa-3x mb-3"></i>
+            <h4 style="color: #ff6a00">24/7 Support</h4>
+            <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        </div>
+        <div class="col-md-3">
+            <i class="fas fa-user-shield fa-3x mb-3"></i>
+            <h4 style="color: #ff6a00">Secure Payment</h4>
+            <p class="mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        </div>
+    </div>
+</div>
+
+<div id="Contact" class="container-fluid">
+    <div class="text-center">
+        <h1 style="color: #f82f2f">GET IN TOUCH</h1>
+    </div>
+    <div class="row d-flex justify-content-center">
+        @using (Html.BeginForm("ContactAdmin_Customer", "Index", FormMethod.Post, htmlAttributes: new
+        {
+            @class = "col-md-8"
+        }))
+        {
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Email address</label>
+                <input type="email" name="email" class="form-control col-12 border" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Message</label>
+                <textarea class="form-control col-12 border" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+            </div>
+            <button class="btn btn-primary mt-4 bt" type="submit">Send</button>
+
+        }
+    </div>
+
+</div>
+

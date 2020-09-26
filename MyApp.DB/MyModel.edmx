@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MobileBazaarDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="TotalPrice" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="varchar(max)" />
+          <Property Name="Message" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tbl_Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="TotalPrice" Type="int" />
+          <Property Name="OrderDate" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="50" />
+          <Property Name="Brand" Type="varchar" MaxLength="50" />
+          <Property Name="Warranty" Type="varchar" MaxLength="50" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="SoldItems" Type="int" />
+          <Property Name="Price" Type="int" />
+          <Property Name="ImagePath" Type="varchar(max)" />
+          <Property Name="DisplayType" Type="varchar(max)" />
+          <Property Name="DisplaySize" Type="varchar(max)" />
+          <Property Name="Resolution" Type="varchar(max)" />
+          <Property Name="SelfieCamera" Type="varchar(max)" />
+          <Property Name="MainCamera" Type="varchar(max)" />
+          <Property Name="ROM" Type="varchar" MaxLength="50" />
+          <Property Name="RAM" Type="varchar" MaxLength="50" />
+          <Property Name="OperatingSystem" Type="varchar(max)" />
+          <Property Name="Chipset" Type="varchar(max)" />
+          <Property Name="CPU" Type="varchar" MaxLength="50" />
+          <Property Name="GPU" Type="varchar" MaxLength="50" />
+          <Property Name="Weight" Type="varchar" MaxLength="50" />
+          <Property Name="Color" Type="varchar" MaxLength="50" />
+          <Property Name="Dimension" Type="varchar" MaxLength="50" />
+          <Property Name="SIM" Type="varchar" MaxLength="50" />
+          <Property Name="WLAN" Type="varchar(max)" />
+          <Property Name="Bluetooth" Type="varchar" MaxLength="50" />
+          <Property Name="GPS" Type="varchar" MaxLength="50" />
+          <Property Name="USB" Type="varchar" MaxLength="50" />
+          <Property Name="BatteryType" Type="varchar(max)" />
+          <Property Name="Sensors" Type="varchar(max)" />
+          <Property Name="Video" Type="varchar(max)" />
+          <Property Name="NetworkTechnology" Type="varchar(max)" />
+          <Property Name="ReleaseYear" Type="int" />
+          <Property Name="Ratings" Type="int" />
+        </EntityType>
+        <Association Name="FK_tbl_Cart_tbl_Customer">
+          <End Role="tbl_Customer" Type="Self.tbl_Customer" Multiplicity="0..1" />
+          <End Role="tbl_Cart" Type="Self.tbl_Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="tbl_Cart">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Cart_tbl_Product1">
+          <End Role="tbl_Product" Type="Self.tbl_Product" Multiplicity="0..1" />
+          <End Role="tbl_Cart" Type="Self.tbl_Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="tbl_Cart">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MobileBazaarDBModelStoreContainer">
+          <EntitySet Name="tbl_Cart" EntityType="Self.tbl_Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Contact" EntityType="Self.tbl_Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Order" EntityType="Self.tbl_Order" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_Product" EntityType="Self.tbl_Product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbl_Cart_tbl_Customer" Association="Self.FK_tbl_Cart_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_Cart" EntitySet="tbl_Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Cart_tbl_Product1" Association="Self.FK_tbl_Cart_tbl_Product1">
+            <End Role="tbl_Product" EntitySet="tbl_Product" />
+            <End Role="tbl_Cart" EntitySet="tbl_Cart" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MobileBazaarDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tbl_Cart" Relationship="MobileBazaarDBModel.FK_tbl_Cart_tbl_Customer" FromRole="tbl_Customer" ToRole="tbl_Cart" />
+        </EntityType>
+        <EntityContainer Name="MobileBazaarDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Customer" EntityType="Self.tbl_Customer" />
+          <EntitySet Name="tbl_Product" EntityType="MobileBazaarDBModel.tbl_Product" />
+          <EntitySet Name="tbl_Cart" EntityType="MobileBazaarDBModel.tbl_Cart" />
+          <AssociationSet Name="FK_tbl_Cart_tbl_Customer" Association="MobileBazaarDBModel.FK_tbl_Cart_tbl_Customer">
+            <End Role="tbl_Customer" EntitySet="tbl_Customer" />
+            <End Role="tbl_Cart" EntitySet="tbl_Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_Cart_tbl_Product1" Association="MobileBazaarDBModel.FK_tbl_Cart_tbl_Product1">
+            <End Role="tbl_Product" EntitySet="tbl_Product" />
+            <End Role="tbl_Cart" EntitySet="tbl_Cart" />
+          </AssociationSet>
+          <EntitySet Name="tbl_Contact" EntityType="MobileBazaarDBModel.tbl_Contact" />
+          <EntitySet Name="tbl_Order" EntityType="MobileBazaarDBModel.tbl_Order" />
+        </EntityContainer>
+        <EntityType Name="tbl_Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Warranty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="SoldItems" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DisplayType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DisplaySize" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Resolution" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SelfieCamera" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="MainCamera" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ROM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RAM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OperatingSystem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Chipset" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CPU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GPU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Weight" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dimension" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SIM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WLAN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Bluetooth" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GPS" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="USB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BatteryType" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sensors" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NetworkTechnology" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ReleaseYear" Type="Int32" />
+          <Property Name="Ratings" Type="Int32" />
+          <NavigationProperty Name="tbl_Cart" Relationship="MobileBazaarDBModel.FK_tbl_Cart_tbl_Product1" FromRole="tbl_Product" ToRole="tbl_Cart" />
+        </EntityType>
+        <EntityType Name="tbl_Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="TotalPrice" Type="Int32" />
+          <NavigationProperty Name="tbl_Customer" Relationship="MobileBazaarDBModel.FK_tbl_Cart_tbl_Customer" FromRole="tbl_Cart" ToRole="tbl_Customer" />
+          <NavigationProperty Name="tbl_Product" Relationship="MobileBazaarDBModel.FK_tbl_Cart_tbl_Product1" FromRole="tbl_Cart" ToRole="tbl_Product" />
+        </EntityType>
+        <Association Name="FK_tbl_Cart_tbl_Customer">
+          <End Type="MobileBazaarDBModel.tbl_Customer" Role="tbl_Customer" Multiplicity="0..1" />
+          <End Type="MobileBazaarDBModel.tbl_Cart" Role="tbl_Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Customer">
+              <PropertyRef Name="CustomerID" />
+            </Principal>
+            <Dependent Role="tbl_Cart">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_Cart_tbl_Product1">
+          <End Type="MobileBazaarDBModel.tbl_Product" Role="tbl_Product" Multiplicity="0..1" />
+          <End Type="MobileBazaarDBModel.tbl_Cart" Role="tbl_Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="tbl_Cart">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tbl_Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tbl_Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="TotalPrice" Type="Int32" />
+          <Property Name="OrderDate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MobileBazaarDBModelStoreContainer" CdmEntityContainer="MobileBazaarDBEntities">
+          <EntitySetMapping Name="tbl_Customer">
+            <EntityTypeMapping TypeName="MobileBazaarDBModel.tbl_Customer">
+              <MappingFragment StoreEntitySet="tbl_Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Product">
+            <EntityTypeMapping TypeName="MobileBazaarDBModel.tbl_Product">
+              <MappingFragment StoreEntitySet="tbl_Product">
+                <ScalarProperty Name="Ratings" ColumnName="Ratings" />
+                <ScalarProperty Name="ReleaseYear" ColumnName="ReleaseYear" />
+                <ScalarProperty Name="NetworkTechnology" ColumnName="NetworkTechnology" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="Sensors" ColumnName="Sensors" />
+                <ScalarProperty Name="BatteryType" ColumnName="BatteryType" />
+                <ScalarProperty Name="USB" ColumnName="USB" />
+                <ScalarProperty Name="GPS" ColumnName="GPS" />
+                <ScalarProperty Name="Bluetooth" ColumnName="Bluetooth" />
+                <ScalarProperty Name="WLAN" ColumnName="WLAN" />
+                <ScalarProperty Name="SIM" ColumnName="SIM" />
+                <ScalarProperty Name="Dimension" ColumnName="Dimension" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="GPU" ColumnName="GPU" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="Chipset" ColumnName="Chipset" />
+                <ScalarProperty Name="OperatingSystem" ColumnName="OperatingSystem" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="ROM" ColumnName="ROM" />
+                <ScalarProperty Name="MainCamera" ColumnName="MainCamera" />
+                <ScalarProperty Name="SelfieCamera" ColumnName="SelfieCamera" />
+                <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+                <ScalarProperty Name="DisplaySize" ColumnName="DisplaySize" />
+                <ScalarProperty Name="DisplayType" ColumnName="DisplayType" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="SoldItems" ColumnName="SoldItems" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Warranty" ColumnName="Warranty" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Cart">
+            <EntityTypeMapping TypeName="MobileBazaarDBModel.tbl_Cart">
+              <MappingFragment StoreEntitySet="tbl_Cart">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Contact">
+            <EntityTypeMapping TypeName="MobileBazaarDBModel.tbl_Contact">
+              <MappingFragment StoreEntitySet="tbl_Contact">
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Order">
+            <EntityTypeMapping TypeName="MobileBazaarDBModel.tbl_Order">
+              <MappingFragment StoreEntitySet="tbl_Order">
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,276 @@
+﻿body {
+    padding-top: 0px;
+}
+
+/*#sbox{
+    width: 800px;
+}
+
+.navbar-nav{
+   
+}
+
+.nav-item {
+    margin-right: 18%;
+    border: 1px solid white;
+    box-sizing: content-box;
+    font-size: 15px;
+    font-weight: 200;
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+.navbar-brand{
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px !important;
+}*/
+
+/**{
+    margin: 0;
+    padding: 0;
+}
+
+nav.bar{
+    background-color: #373131;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px 0px 100px;
+    height: 70px;
+    align-items: center;
+    border: 1px solid blue;
+    position: sticky;
+}
+*/
+nav.search{
+    height: 80px;
+}
+
+nav .logo img {
+    width: 38%;
+    padding-left: 10%;
+}
+@media(max-width: 576px){
+    nav .logo img{
+        padding-left: 1%;
+    }
+}
+
+nav ul li {
+    margin: 0px 15px;        
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none !important;
+    font-size: 21px;
+    transition: all 0.3s ease;
+}
+.nav-link {
+    color: orange !important;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.nav-link:hover
+{
+    color: yellow !important;
+    font-size: 23px;
+}
+
+.bar {
+    background-color: #373131 !important;
+}
+.search {
+    background-color: #574444 !important;
+}
+
+.alrt{
+    border: 1px solid #574444;
+    background-color: #574444;
+}
+
+/*
+nav .menu-btn i{
+    color:#fff;
+    font-size:22px;
+    cursor: pointer;
+    display: none;
+    width: 0%;
+}
+
+#click {
+    display: none;
+}
+*/
+.account-my {
+    display: none;
+    color: yellow;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.account {
+    color: yellow;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.account:hover{
+    font-size: 20px;
+}
+
+.account-my:hover {
+    font-size: 20px;
+}
+
+.icon:hover{
+    font-size: 20px;
+}
+.crsr {
+    cursor: pointer;
+}
+
+.crsr a{
+    text-decoration: none;
+    color: greenyellow;
+}
+
+.sbox:hover{
+    font-size: 20px;
+}
+
+.first-nav{
+    z-index: 2;
+}
+
+.second-nav{
+    z-index: 1;
+}
+
+.footer{
+    background: #303036;
+    color: #d3d3d3;
+    bottom: 0px;
+    
+}
+
+.footer-content .row{
+    border: 1px solid red;
+}
+
+.footer .footer-content .cntct .contact span{
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 8px;
+}
+
+.footer .footer-content .about .socials a {
+    border: 1px solid gray;
+    width: 45px;
+    height: 41px;
+    padding-top: 5px;
+    margin-right: 5px;
+    text-align: center;
+    display: inline-block;
+    font-size: 1.3em;
+    border-radius: 5px;
+}
+
+.footer .footer-content .about .socials a:hover{
+    border: 2px solid white;
+}
+
+.footer-content h1, .footer-content h2 {
+    color: white;
+}
+
+.footer-content .links ul a{
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: white;
+    transition: all .3s;
+}
+.footer-content .links ul a:hover {
+    margin-left: 15px;
+    transition: all .3s;
+}
+.footer-content .about h1 span {
+    color: orangered;
+}
+
+.footer-section{
+    padding: 25px;
+}
+
+
+
+.footer .footer-bottom{
+    
+    color: #686868;
+    text-align: center;
+    bottom: 0px;
+    width: 100%;
+    left: 0px;
+    padding-top: 20px;
+    color: white;
+}
+
+#About{
+    bottom: 0px;
+}
+
+.modal-content h4{
+    font-family: Arial, Helvetica, sans-serif;
+    color:#ef2e2e;
+
+}
+/*
+@media(max-width: 940px){
+    nav ul{
+        position: fixed;
+        top: 120px;
+        left: -100%;
+        background: #111;
+        height: 80vh;
+        width: 100%;
+        display: block;
+        text-align: center;
+        transition: all 0.5s ease;
+        z-index: 10;
+    }
+
+    nav ul li{
+        margin: 40px 0;
+    }
+
+    nav ul li a{
+        font-size: 18px;
+        display: block;
+    }
+
+    nav ul li a:hover, nav ul li a.act {
+        color: yellow;
+        font-size: 20px;
+        background: none;
+    }
+
+    nav .menu-btn i{
+        display: block;
+    }
+
+    #click:checked ~ ul{
+        left: 0%;
+    }
+}*/
+
+@media(max-width: 576px){
+    .account-my {
+        display: flex;
+    }
+
+    .account {
+        display: none;
+    }
+}

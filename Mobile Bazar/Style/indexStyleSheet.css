@@ -1,0 +1,148 @@
+﻿html {
+    scroll-behavior: smooth;
+}
+#Home .row{
+    padding: 50px 100px;
+    background-image:linear-gradient(to bottom right, #e8d54a 15% , #fdd40a);
+    height: 70vh;
+}
+.jumbotron {
+    background-color: white;
+}
+
+.top-sale-container{
+    background-color: white;
+    padding: 5px 25px;
+    border-radius: 5px;
+}
+
+.Top-Sale{
+    margin-top: 0%;
+}
+.top {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.top a{
+    text-decoration: none;
+    color: #e62828;
+}
+
+.top a:hover {
+    font-size: 42px;
+}
+
+.card {
+    box-shadow: 5px 5px 2px 2px gray;
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: 15px 15px 5px 5px gray;
+    cursor: pointer;
+}
+
+#Contact .btn{
+    background-image: linear-gradient(to top, #c93535 60%, #e62828);
+    padding: 9px 19px;
+    border: none;
+}
+
+#Home .carousel .btn {
+    background-image: linear-gradient(to top, #c93535 60%, #e62828);
+    padding: 9px 19px;
+    border: none;
+}
+
+.btn:hover{
+    font-size: 19px;
+}
+
+.desc{
+    padding: 10px 80px;
+}
+
+.carousel-control-prev, .carousel-control-next{
+    color: black !important;
+}
+
+.Special-Price {
+    margin-top: 5%;
+}
+
+
+.Latest-Phone {
+    margin-top: 5%;
+}
+
+.card-deck {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    align-items: stretch;
+}
+
+.card-deck .card {
+    display: block;
+    flex-basis: 20%; /* change this value for each breakpoint*/
+}
+
+div .f-row {
+    text-align: center;
+    
+}
+
+#Features {
+    text-align: center; 
+    border-radius: 10px;
+    padding-top:2%;
+    margin-bottom: 4%;
+    padding-bottom: 5%;
+}
+
+#Contact {
+    margin-top: 3%;
+    margin-bottom: 5%;
+    padding: 5%;
+    background-color: lightgray;
+}
+
+#Contact .bt{
+    float: right;
+    padding: 10px 20px;
+}
+
+@media(max-width: 774px){
+    #Contact {
+        margin-top: 10%;
+        margin-bottom:2%;
+    }
+}
+
+
+#Contact textarea {
+    background-color: #fff;
+}
+#Contact input {
+    background-color: #fff;
+}
+
+
+@media(max-width: 1110px){
+    .card-deck .card {
+        display: block;
+        flex-basis: 100%; /* change this value for each breakpoint*/
+        margin-top: 5%;
+    }
+}
+
+@media(max-width: 805px) {
+    .row{
+        height: 100vh;
+    }
+    .desc {
+        padding: 10px 10px;
+    }
+}
